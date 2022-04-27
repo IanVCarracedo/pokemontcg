@@ -1,18 +1,35 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <body>
+    <navbar-component />
+    <b-spinner class="d-block ml-auto mr-auto spinner" v-if="loading" label="Spinning"></b-spinner>
+    <router-view />
+    <footer-component />
+  </body>
 </template>
 
-<style>
+<script>
+
+import FooterComponent from './components/';
+import NavbarComponent from '';
+
+import { mapState } from "vuex";
+export default {
+  components: {
+    FooterComponent,
+    NavbarComponent
+  }
+}
+</script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
 }
 
 nav {
