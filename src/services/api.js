@@ -14,25 +14,9 @@ export const pokeApi = {
     cardDetail: (id) => request.get(`cards/${id}`),
 
     /*Request that search for cards */
-    searchCard: (query, page, pageSize, order) => request.get(`cards/`, {
+    searchCard: (query) => request.get(`cards/`, {
         params: {
-            q: query,
-            page: page,
-            pageSize: pageSize,
-            orderBy: order
-        }
-    }),
-
-    /*Request that get set details */
-    setDetail: (id) => request.get(`set/${id}`),
-
-    /*Request that search for sets */
-    searchSet: (query, page, pageSize, order) => request.get(`sets/`,{
-        params:{
-            q:query,
-            page: page,
-            pageSize: pageSize,
-            orderBy: order
+            q: "name:"+query
         }
     }),
 

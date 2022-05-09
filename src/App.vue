@@ -1,22 +1,19 @@
 <template>
   <body>
     <navbar-component />
-    <b-spinner class="d-block ml-auto mr-auto spinner" v-if="loading" label="Spinning"></b-spinner>
     <router-view />
-    <footer-component />
   </body>
 </template>
 
 <script>
 
-import FooterComponent from './components/';
-import NavbarComponent from '';
+import NavbarComponent from './components/Navbar.vue';
+
 
 import { mapState } from "vuex";
 export default {
   components: {
-    FooterComponent,
-    NavbarComponent
+    NavbarComponent,
   }
 }
 </script>
