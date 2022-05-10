@@ -18,6 +18,11 @@ const routes = [
     path: '/favourites',
     name: 'favourites',
     component: FavouritesView
+  },
+  {
+    path: '/cardspec/:id',
+    name: 'CardSpec',
+    component: CardSpecView
   }
 ]
 

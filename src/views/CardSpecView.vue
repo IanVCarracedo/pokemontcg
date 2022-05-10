@@ -8,6 +8,14 @@
         <div class="w-2/3">
             <div class="flex justify-between items-center mx-6 md:mt-8">
                 <h2 class="text-4xl text-center font-hairline">{{ card.name }}</h2>
+                <div class="fav-icon" v-if="card.name">
+                    <a v-if="favourite" @click="deleteFavourite">
+                        <font-awesome-icon color="red" size="2x" :icon="['fa', 'heart']"/>
+                    </a>
+                    <a v-else @click="addToFavourites">
+                        <i color="red" class="fa-regular fa-heart fa-2x"></i>
+                    </a>
+                </div>
                 <div class="flex items-center">
                     <h2 class="text-2xl text-center font-hairline" v-if="card.hp && card.hp != 'None'">{{ card.hp }} HP</h2>
                     <p class="text leading-normal mb-4" v-if="card.types">
@@ -85,14 +93,34 @@
 </template>
 
 <script>
+import {pokeApi} from '@/services/api.js';
 
-import { defineComponent } from '@vue/composition-api'
-
-export default defineComponent({
-    setup() {
-        
+export default {
+    data() {
+        return{
+            card: {},
+            acquired: false,
+        }
     },
-})
+    methods: {
+        async getCard(id){
+            let card = await pokeApi.cardDetail(id);
+            this.card = card.data;
+        },
+        addToAcquired(){
+            this.$store.dispatch('addToAcquired', {id: this.card.id, name: this.card.name})
+            .then(() => {
+            this.acquired = true;
+        }).catch(err => console.log(err));
+        },
+        deleteAcquired(){
+            this.$store.dispatch('deleteAcquired', this.card.id).then(() => {
+            this.acquired = false;
+        }).catch(err => console.log(err));
+        },
+        
+    }
+}
 </script>
 
 <style scoped>
