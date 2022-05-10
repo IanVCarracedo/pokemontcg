@@ -10,17 +10,12 @@
     export default {
         data() {
             return {
-                card: {},
             }
         },
-        props: ['card','modalChange'],
+        props: ['card'],
         methods:{
-            async modal(card){
-                this.modalChange();
-                await this.getCard(card.id);
-            },
-            goDetail(id){
-                this.$router.push(`/card/${id}`);
+            goSpecs(id){
+                this.$router.push(`/cardspec/${id}`);
             }
         }
     }

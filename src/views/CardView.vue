@@ -7,7 +7,7 @@
       <div v-if="control" class="flex flex-wrap">
         <div class="max-w-xxs mb-6 mx-4" >
           <div class="shadow-md rounded-lg text-none" v-for="card in cards.data" :key="card.id" >
-            <poke-card :modalChange="modalChange" :card="card"/>
+            <poke-card :card="card"/>
           </div>
         </div>
       </div>
@@ -17,7 +17,6 @@
 <script>
 // @ is an alias to /src
 import PokeCard from '@/components/PokeCard.vue';
-import ModalCarta from '@/components/ModalCarta.vue';
 import Navbar from '@/components/Navbar.vue';
 import {pokeApi} from '@/services/api.js';
 
@@ -25,12 +24,10 @@ export default {
   name: 'home',
   components: {
     PokeCard,
-    ModalCarta,
     Navbar,
   },
   data() {
     return {
-      modalOpen: false,
       pokemonData: {},
       cards: [],
       card: {},
@@ -58,10 +55,6 @@ export default {
       this.supertypes = supertypes.data;
       this.rarities = rarities.data;
     },
-    
-    modalChange(){
-      this.modalOpen= true;
-    }
   },
 };
 </script>

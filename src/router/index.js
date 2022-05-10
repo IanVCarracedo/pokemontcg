@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import CardView from '../views/CardView.vue'
 import AboutView from '../views/AboutView.vue'
 import FavouritesView from '../views/FavouritesView.vue'
+import CardSpecView from '../views/CardSpecView.vue'
 
 const routes = [
   {
@@ -15,7 +16,7 @@ const routes = [
     component: AboutView
   },
   {
-    path: '/favourites',
+    path: '/acquired',
     name: 'favourites',
     component: FavouritesView
   },

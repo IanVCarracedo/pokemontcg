@@ -19,7 +19,7 @@
           </ul>
           <span v-if="collapsed" id="text"> | </span>
           <ul class="nav-item">
-            <router-link class="nav-link underline" to="/favourites">Aconseguides</router-link>
+            <router-link class="nav-link underline" to="/acquired">Aconseguides</router-link>
           </ul>
         </ul>
       </div>
